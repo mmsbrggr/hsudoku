@@ -21,7 +21,7 @@ module Sudoku.Type(
 -- ----------
 
 -- |The data type representing a single sudoku board.
-newtype Sudoku = Sudoku String
+newtype Sudoku = Sudoku String deriving (Show)
 
 -- |Representing the difficulty level of a sudoku
 data Difficulty = Easy | Medium | Hard | Evil deriving (Eq)

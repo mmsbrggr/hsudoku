@@ -165,5 +165,5 @@ solve = map (map $ map head) . search . prune . choices
 
 -- |For a sudoku problem returns a list of all solutions
 solveSudoku :: Sudoku -> Maybe [Sudoku]
-solveSudoku = sequence . map fromString .  concat . solve . groupBy boardsize . toString
+solveSudoku = sequence . map fromString . map concat . solve . groupBy boardsize . toString
 
