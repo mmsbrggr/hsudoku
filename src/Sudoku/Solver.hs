@@ -8,8 +8,8 @@ This module provides functions for solving a sudoku.
 -}
 module Sudoku.Solver (solveSudoku) where
 
-import           Data.List   ((\\))
 import           Sudoku.Type
+import           Util
 
 -- Internal data types
 -- -------------------
@@ -25,11 +25,6 @@ type Choices  = [Char]
 -- Helper functions
 -- ----------------
 
--- |Is true iff a list has no duplicate elements
-nodups :: Eq a => [a] -> Bool
-nodups []     = True
-nodups (x:xs) = x `notElem` xs && nodups xs
-
 -- |Is true iff a character represents an empty field
 blank :: Char -> Bool
 blank = (==) blankval
@@ -37,25 +32,6 @@ blank = (==) blankval
 -- |Splits a list into multiple list of length boxsize
 group :: [a] -> [[a]]
 group = groupBy boxsize
-
--- |Splits a list into multiple lists of a given length
-groupBy :: Int -> [a] -> [[a]]
-groupBy n [] = []
-groupBy n xs = (take n xs) : groupBy n (drop n xs)
-
--- |The reverse operation of groupBy
-ungroup :: [[a]] -> [a]
-ungroup = concat
-
--- |Is true iff a given list contains exactly one element
-single :: [a] -> Bool
-single [a] = True
-single _   = False
-
--- |Removes the elements of the first list from the second list
-delete :: Eq a => [a] -> [a] -> [a]
-delete = flip (\\)
-
 
 -- Selection functions
 -- -------------------
