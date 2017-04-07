@@ -17,14 +17,26 @@ module Sudoku.Type(
     , toString
 ) where
 
+import           Util
+
 -- Data types
 -- ----------
 
 -- |The data type representing a single sudoku board.
-newtype Sudoku = Sudoku String deriving (Show)
+newtype Sudoku = Sudoku String
 
 -- |Representing the difficulty level of a sudoku
 data Difficulty = Easy | Medium | Hard | Evil deriving (Eq)
+
+instance Show Sudoku where
+    -- |Turns the sudoku into a pretty string representation of a board
+    show (Sudoku s) = "\n" ++ (concat $ map showThird grouped) ++ line
+        where grouped     = groupBy boxsize . map (groupBy boxsize) . groupBy boardsize $ s
+              showThird t = line ++ (concat $ map showRow t)
+              showRow r   = (concat $ map showRowThird r) ++ "|\n"
+              showRowThird rt = "|" ++ (concat $ map showCell rt)
+              showCell c  = " " ++ (c : " ")
+              line        = (concat $ replicate boardsize "---") ++ (concat $ replicate boxsize "-") ++ "-\n"
 
 -- Parameters
 -- ----------
