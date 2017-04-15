@@ -68,7 +68,7 @@
     background: #2980B9;
 }
 
-#mainGrid button:checked {
+#mainGrid button:focus {
     background: #E74C3C;
 }
 

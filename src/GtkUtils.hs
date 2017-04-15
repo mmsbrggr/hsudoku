@@ -12,6 +12,7 @@ module GtkUtils (
     , builderGetsTyped
     , buildMainWindow
     , windowAddCss
+    , writeCell
     ) where
 
 import           Control.Exception
@@ -54,4 +55,13 @@ windowAddCss window path = liftIO $ do
     cssProvider <- cssProviderNew
     cssProviderLoadFromPath cssProvider path
     styleContextAddProviderForScreen screen cssProvider 1000
+
+-- | Writes a character into the label of a menu-button representing a sudoku
+--   cell
+writeCell :: (IsBin o) => o -> Char -> IO ()
+writeCell cell char = do
+    binCell <- toBin cell
+    labelO <- binGetChild binCell
+    label <- unsafeCastTo Label labelO
+    labelSetText label (singleton char)
 

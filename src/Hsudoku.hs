@@ -4,10 +4,11 @@ import           Data.GI.Base
 import qualified GI.Gtk        as Gtk
 import qualified GtkUtils      as Gtk
 
-import           Data.Text     hiding (map, zipWith)
+import qualified Data.Text as T
 import           Sudoku.Loader
 import           Sudoku.Solver
 import           Sudoku.Type
+import           Util
 
 main :: IO ()
 main = do
@@ -15,19 +16,30 @@ main = do
     (window, builder) <- Gtk.buildMainWindow "mainWindow" "gui/hsudoku.ui"
     Gtk.windowAddCss window "gui/theme.css"
     inputPopover <- Gtk.builderGetTyped builder "inputPopover" Gtk.Popover
-    cells <- Gtk.builderGetsTyped builder cellNames Gtk.MenuButton
-    Just sudoku <- loadSudoku Easy
-    sequence $ zipWith (\c t -> writeCell c t) cells (toString sudoku)
+    cells <- Gtk.builderGetsTyped builder cellNames Gtk.Button
+    cellsBindHandlers cells inputPopover
     #showAll window
     Gtk.main
 
-cellNames :: [Text]
-cellNames = map (pack . (++) "cell") $ map show [1..81]
+cellNames :: [T.Text]
+cellNames = map (T.pack . (++) "cell") $ map show [1..81]
 
-writeCell :: Gtk.MenuButton -> Char -> IO ()
-writeCell cell char = do
-    binCell <- Gtk.toBin cell
-    labelO <- Gtk.binGetChild binCell
-    label <- Gtk.unsafeCastTo Gtk.Label labelO
-    Gtk.labelSetText label (singleton char)
+cellsBindHandlers :: [Gtk.Button] -> Gtk.Popover -> IO ()
+cellsBindHandlers cells popover = mapM_ (\c -> do
+            on c #focusInEvent $ focusInHandler c
+            on c #focusOutEvent $ focusOutHandler c
+        ) cells
+    where focusInHandler c _ = cellShowPopover c popover
+          focusOutHandler c _ = maybeHidePopover popover
+
+cellShowPopover :: Gtk.Button -> Gtk.Popover -> IO Bool
+cellShowPopover cell popover = do
+    popover `set` [#relativeTo := cell]
+    #show popover
+    pure False
+
+maybeHidePopover :: Gtk.Popover -> IO Bool
+maybeHidePopover popover = do
+    -- #hide popover
+    pure False
 
