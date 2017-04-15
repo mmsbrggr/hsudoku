@@ -6,12 +6,18 @@ License     : MIT
 
 This modules provides generic utility functions regarding Gtk.
 -}
-module GtkUtils (BuilderCastException(..), builderGetTyped) where
+module GtkUtils (
+      BuilderCastException(..)
+    , builderGetTyped
+    , builderGetsTyped
+    , buildMainWindow
+    , windowAddCss
+    ) where
 
 import           Control.Exception
 import           Control.Monad.IO.Class
 import           Data.GI.Base
-import           Data.Text
+import           Data.Text              hiding (map)
 import           Data.Typeable
 import           GI.Gtk
 
@@ -29,4 +35,23 @@ builderGetTyped builder ident gtype =
         case o of
             Just a  -> unsafeCastTo gtype a
             Nothing -> throw $ UnknownIdException $ unpack ident
+
+builderGetsTyped b is t = sequence $ map (\i -> builderGetTyped b i t) is
+
+-- | Builds the main application window from a xml definition file for which the
+--   path is given
+buildMainWindow :: MonadIO m => Text -> Text -> m (Window, Builder)
+buildMainWindow name path = liftIO $ do
+    builder <- builderNewFromFile path
+    window  <- builderGetTyped builder name Window
+    on window #destroy mainQuit
+    pure (window, builder)
+
+-- | Adds to a given window a css file for which the path is given
+windowAddCss :: (MonadIO m, IsWindow a) => a -> Text -> m ()
+windowAddCss window path = liftIO $ do
+    screen <- windowGetScreen window
+    cssProvider <- cssProviderNew
+    cssProviderLoadFromPath cssProvider path
+    styleContextAddProviderForScreen screen cssProvider 1000
 

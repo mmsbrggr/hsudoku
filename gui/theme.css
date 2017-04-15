@@ -1,0 +1,79 @@
+#mainWindow {
+    background: #ECF0F1;
+}
+
+#mainGrid {
+    border: 2px solid #999;
+}
+
+#mainGrid > grid:nth-child(2n+1) {
+    background: #E1E5E5;
+}
+
+#mainGrid > grid:nth-child(4),
+#mainGrid > grid:nth-child(5),
+#mainGrid > grid:nth-child(6) {
+    border-style: solid;
+    border-color: #999;
+    border-left-width: 2px;
+    border-right-width: 2px;
+}
+
+
+#mainGrid > grid:nth-child(2),
+#mainGrid > grid:nth-child(5),
+#mainGrid > grid:nth-child(8) {
+    border-style: solid;
+    border-color: #999;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+#mainGrid > grid > *:nth-child(4) ,
+#mainGrid > grid > *:nth-child(5) ,
+#mainGrid > grid > *:nth-child(6) {
+    border-style: solid;
+    border-color: #bbb;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+
+
+#mainGrid > grid > *:nth-child(2),
+#mainGrid > grid > *:nth-child(5),
+#mainGrid > grid > *:nth-child(8) {
+    border-style: solid;
+    border-color: #bbb;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+#mainGrid box label {
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 18px;
+}
+
+#mainGrid button {
+    border-radius: 0;
+    border: 0;
+    background: transparent;
+}
+
+#mainGrid button:hover {
+    background: #3498DB;
+}
+
+#mainGrid button:active {
+    background: #2980B9;
+}
+
+#mainGrid button:checked {
+    background: #E74C3C;
+}
+
+#inputPopover grid button {
+    min-width: 20px;
+    min-height: 20px;
+}
+

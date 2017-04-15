@@ -55,7 +55,7 @@ cellvals = "123456789"
 
 -- |The symbol representing an empty field
 blankval :: Char
-blankval = '.'
+blankval = ' '
 
 -- Constructors
 -- ------------

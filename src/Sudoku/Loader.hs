@@ -30,6 +30,6 @@ loadSudoku :: Difficulty -> IO (Maybe Sudoku)
 loadSudoku d = do
     let doc = fromUrl (url d)
     values <- runX $ doc >>> css "#puzzle_grid input" ! "value"
-    let sudokuString = concat $ map (\v -> if v == "" then "." else v) values
+    let sudokuString = concat $ map (\v -> if v == "" then blankval:"" else v) values
     pure (fromString sudokuString)
 
