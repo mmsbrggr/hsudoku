@@ -3,18 +3,199 @@
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <!-- interface-css-provider-path theme.css -->
+  <object class="GtkPopover" id="inputPopover">
+    <property name="name">inputPopover</property>
+    <property name="can_focus">False</property>
+    <property name="relative_to">box1</property>
+    <property name="modal">False</property>
+    <child>
+      <object class="GtkBox" id="box1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkButton" id="input1">
+                <property name="label" translatable="yes">1</property>
+                <property name="name">inputPopover</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="input4">
+                <property name="label" translatable="yes">4</property>
+                <property name="name">inputPopover</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="input7">
+                <property name="label" translatable="yes">7</property>
+                <property name="name">inputPopover</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="input2">
+                <property name="label" translatable="yes">2</property>
+                <property name="name">inputPopover</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="input5">
+                <property name="label" translatable="yes">5</property>
+                <property name="name">inputPopover</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="input8">
+                <property name="label" translatable="yes">8</property>
+                <property name="name">inputPopover</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="input3">
+                <property name="label" translatable="yes">3</property>
+                <property name="name">inputPopover</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="input6">
+                <property name="label" translatable="yes">6</property>
+                <property name="name">inputPopover</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="input9">
+                <property name="label" translatable="yes">9</property>
+                <property name="name">inputPopover</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="inputClear">
+            <property name="label" translatable="yes">Clear</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="label" translatable="yes">Solve</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkWindow" id="mainWindow">
     <property name="can_focus">False</property>
     <property name="window_position">center</property>
     <child>
       <object class="GtkBox" id="mainBox">
-        <property name="name">mainBox</property>
+        <property name="name">container</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="margin_left">15</property>
-        <property name="margin_right">15</property>
-        <property name="margin_top">15</property>
-        <property name="margin_bottom">15</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
@@ -40,7 +221,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell1">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell1</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -70,7 +251,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell10">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell10</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -100,7 +281,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell19">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell19</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -130,7 +311,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell2">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell2</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -160,7 +341,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell11">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell11</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -190,7 +371,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell20">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell20</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -220,7 +401,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell3">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell3</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -250,7 +431,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell12">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell12</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -280,7 +461,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell21">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell21</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -322,7 +503,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell28">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell28</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -352,7 +533,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell37">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell37</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -382,7 +563,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell46">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell46</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -412,7 +593,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell29">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell29</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -442,7 +623,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell38">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell38</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -472,7 +653,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell47">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell47</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -502,7 +683,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell30">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell30</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -532,7 +713,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell39">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell39</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -562,7 +743,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell48">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell48</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -604,7 +785,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell55">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell55</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -634,7 +815,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell64">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell64</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -664,7 +845,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell73">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell73</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -694,7 +875,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell56">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell56</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -724,7 +905,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell65">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell65</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -754,7 +935,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell74">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell74</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -784,7 +965,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell57">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell57</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -814,7 +995,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell66">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell66</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -844,7 +1025,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell75">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell75</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -886,7 +1067,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell4">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell4</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -916,7 +1097,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell13">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell13</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -946,7 +1127,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell22">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell22</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -976,7 +1157,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell5">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell5</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1006,7 +1187,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell14">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell14</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1036,7 +1217,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell23">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell23</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1066,7 +1247,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell6">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell6</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1096,7 +1277,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell15">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell15</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1126,7 +1307,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell24">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell24</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1168,7 +1349,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell31">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell31</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1198,7 +1379,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell40">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell40</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1228,7 +1409,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell49">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell49</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1258,7 +1439,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell32">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell32</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1288,7 +1469,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell41">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell41</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1318,7 +1499,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell50">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell50</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1348,7 +1529,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell33">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell33</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1378,7 +1559,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell42">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell42</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1408,7 +1589,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell51">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell51</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1450,7 +1631,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell58">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell58</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1480,7 +1661,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell67">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell67</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1510,7 +1691,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell76">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell76</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1540,7 +1721,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell59">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell59</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1570,7 +1751,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell68">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell68</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1600,7 +1781,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell77">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell77</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1630,7 +1811,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell60">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell60</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1661,7 +1842,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell69">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell69</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1691,7 +1872,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell78">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell78</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1733,7 +1914,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell7">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell7</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1763,7 +1944,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell16">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell16</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1793,7 +1974,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell25">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell25</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1823,7 +2004,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell8">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell8</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1853,7 +2034,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell17">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell17</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1883,7 +2064,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell26">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell26</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1913,7 +2094,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell9">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell9</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1943,7 +2124,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell18">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell18</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1973,7 +2154,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell27">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell27</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2015,7 +2196,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell34">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell34</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2045,7 +2226,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell43">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell43</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2075,7 +2256,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell52">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell52</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2105,7 +2286,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell35">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell35</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2135,7 +2316,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell44">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell44</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2165,7 +2346,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell53">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell53</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2195,7 +2376,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell36">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell36</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2225,7 +2406,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell45">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell45</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2255,7 +2436,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell54">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell54</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2297,7 +2478,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell61">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell61</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2327,7 +2508,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell70">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell70</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2357,7 +2538,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell79">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell79</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2387,7 +2568,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell62">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell62</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2417,7 +2598,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell71">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell71</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2447,7 +2628,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell80">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell80</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2477,7 +2658,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell63">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell63</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2507,7 +2688,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell72">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell72</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2537,7 +2718,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkButton" id="cell81">
-                        <property name="label" translatable="yes">1</property>
+                        <property name="label" translatable="yes"> </property>
                         <property name="name">cell81</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -2569,191 +2750,6 @@
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkPopover" id="inputPopover">
-    <property name="name">inputPopover</property>
-    <property name="can_focus">False</property>
-    <property name="relative_to">cell1</property>
-    <property name="modal">False</property>
-    <child>
-      <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">1</property>
-                <property name="name">inputPopover</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">4</property>
-                <property name="name">inputPopover</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">7</property>
-                <property name="name">inputPopover</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">2</property>
-                <property name="name">inputPopover</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">5</property>
-                <property name="name">inputPopover</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">8</property>
-                <property name="name">inputPopover</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">3</property>
-                <property name="name">inputPopover</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">6</property>
-                <property name="name">inputPopover</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">9</property>
-                <property name="name">inputPopover</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton">
-            <property name="label" translatable="yes">Clear</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton">
-            <property name="label" translatable="yes">Solve</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>

@@ -2,6 +2,10 @@
     background: #ECF0F1;
 }
 
+#container {
+    padding: 15px;
+}
+
 #mainGrid {
     border: 2px solid #999;
 }
@@ -37,7 +41,6 @@
     border-left-width: 1px;
     border-right-width: 1px;
 }
-
 
 #mainGrid > grid > *:nth-child(2),
 #mainGrid > grid > *:nth-child(5),
