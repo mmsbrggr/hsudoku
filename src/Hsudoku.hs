@@ -24,8 +24,11 @@ main = do
     inputClear <- Ui.builderGetTyped builder "inputClear" Gtk.Button
     on inputClear #clicked $ Ui.writePopoverRelativeCell inputPopover $ blankval
 
-    Just sudoku <- loadSudoku Easy
-    Ui.writeSudoku cells sudoku
+    menu <- Ui.builderGetTyped builder "menu" Gtk.Widget
+    gameButtons <- Ui.builderGetsTyped builder Ui.gameButtonNames Gtk.Button
+    Ui.gameButtonsBindHandlers gameButtons cells menu
+    menuButton <- Ui.builderGetTyped builder "menuButton" Gtk.Button
+    on menuButton #clicked (#show menu)
 
     #showAll window
     Gtk.main

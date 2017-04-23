@@ -11,6 +11,7 @@ module UserInterface (
       BuilderCastException(..)
     , cellNames
     , numberNames
+    , gameButtonNames
     , builderGetTyped
     , builderGetsTyped
     , buildMainWindow
@@ -20,6 +21,7 @@ module UserInterface (
     , cellsBindHandlers
     , numbersBindHandlers
     , writeSudoku
+    , gameButtonsBindHandlers
     ) where
 
 import           Control.Exception
@@ -29,6 +31,7 @@ import qualified Data.Text              as T
 import           Data.Typeable
 import           GI.Gtk
 import           Sudoku.Type
+import           Sudoku.Loader
 
 -- | Thrown when 'castB' fails get an object
 data BuilderCastException = UnknownIdException String deriving (Show, Typeable)
@@ -42,6 +45,10 @@ cellNames = map (T.pack . (++) "cell") $ map show [1..81]
 -- | The ids of the inputs for the numbers in the ui file
 numberNames :: [T.Text]
 numberNames = map (T.pack . (++) "input") $ map show [1..9]
+
+-- | The ids of the buttons which start a new game
+gameButtonNames :: [T.Text]
+gameButtonNames = map (T.pack . (++) "game" . show) [Easy ..] 
 
 -- | Takes a builder and returns the object with a given name
 --   typed as a given gtype
@@ -117,6 +124,7 @@ numberButtonInsert button popover = do
     label <- #getLabel button
     writePopoverRelativeCell popover $ T.head label
 
+-- | Writes a sudoku into a list of buttons
 writeSudoku :: [Button] -> Sudoku -> IO ()
 writeSudoku buttons sudoku = do
     let sudokuChars = toString sudoku
@@ -127,3 +135,19 @@ writeSudoku buttons sudoku = do
                 else b `set` [#sensitive := False]
         ) buttons sudokuChars
 
+-- | Binds the signal handlers to the game buttons in the menu
+gameButtonsBindHandlers :: [Button] -> [Button] -> Widget -> IO ()
+gameButtonsBindHandlers buttons cells menu = do
+    mapM_ (\button -> do
+            label <- #getLabel button
+            let d = read . T.unpack $ label
+            on button #clicked $ newGame d cells menu
+        ) buttons
+
+-- | Prepares a new game in the UI
+newGame :: Difficulty -> [Button] -> Widget -> IO ()
+newGame d cells menu = do
+    Just sudoku <- loadSudoku d
+    writeSudoku cells sudoku
+    #hide menu
+    

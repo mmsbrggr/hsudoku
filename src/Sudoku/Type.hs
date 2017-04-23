@@ -26,7 +26,7 @@ import           Util
 newtype Sudoku = Sudoku String
 
 -- |Representing the difficulty level of a sudoku
-data Difficulty = Easy | Medium | Hard | Evil deriving (Eq)
+data Difficulty = Easy | Medium | Hard | Evil deriving (Read, Show, Eq, Enum)
 
 instance Show Sudoku where
     -- |Turns the sudoku into a pretty string representation of a board

@@ -6,6 +6,29 @@
     padding: 15px;
 }
 
+#menu #backdrop {
+    background: #2C3E50;
+    opacity: 0.8;
+}
+
+#menu #title {
+    font-size: 58px;
+    margin-top: 50px;
+    margin-bottom: 5px;
+    color: #E74C3C;
+    text-shadow: 0px 0px 5px #2C3E50;
+}
+
+#menu #copyright {
+    font-size: 10px;
+    margin-bottom: 145px;
+    color: #ECF0F1;
+}
+
+#menu #menu-text {
+    padding: 20px;
+}
+
 #mainGrid {
     border: 2px solid #999;
 }
@@ -78,5 +101,9 @@
 #inputPopover grid button {
     min-width: 20px;
     min-height: 20px;
+}
+
+#statusBar {
+    padding-top: 15px;
 }
 
