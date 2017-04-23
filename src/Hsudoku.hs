@@ -28,7 +28,7 @@ main = do
     gameButtons <- Ui.builderGetsTyped builder Ui.gameButtonNames Gtk.Button
     Ui.gameButtonsBindHandlers gameButtons cells menu
     menuButton <- Ui.builderGetTyped builder "menuButton" Gtk.Button
-    on menuButton #clicked (#show menu)
+    on menuButton #clicked $ Ui.showMenu menu inputPopover
 
     #showAll window
     Gtk.main

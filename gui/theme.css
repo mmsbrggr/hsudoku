@@ -19,10 +19,14 @@
     text-shadow: 0px 0px 5px #2C3E50;
 }
 
-#menu #copyright {
-    font-size: 10px;
-    margin-bottom: 145px;
+#menu .light {
     color: #ECF0F1;
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+#menu #copyright {
+    margin-bottom: 125px;
 }
 
 #menu #menu-text {

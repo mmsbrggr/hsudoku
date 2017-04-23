@@ -22,6 +22,7 @@ module UserInterface (
     , numbersBindHandlers
     , writeSudoku
     , gameButtonsBindHandlers
+    , showMenu
     ) where
 
 import           Control.Exception
@@ -102,7 +103,7 @@ writePopoverRelativeCell popover char = do
 -- | Binds the signal handlers to buttons
 cellsBindHandlers :: [Button] -> Popover -> IO ()
 cellsBindHandlers cells popover = mapM_ (\c -> do
-            on c #focusInEvent $ focusInHandler c
+            on c #focusInEvent  $ focusInHandler c
         ) cells
     where focusInHandler c _ = do cellShowPopover c popover; pure False
 
@@ -150,4 +151,10 @@ newGame d cells menu = do
     Just sudoku <- loadSudoku d
     writeSudoku cells sudoku
     #hide menu
+
+showMenu :: Widget -> Popover -> IO ()
+showMenu menu popover = do
+    #hide popover
+    popover `set` [#relativeTo := menu]
+    #show menu
     
