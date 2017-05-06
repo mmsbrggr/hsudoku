@@ -102,6 +102,14 @@
     background: #E74C3C;
 }
 
+#mainGrid button.correct {
+    animation: correct 0.75s ease-out;
+}
+
+#mainGrid button.incorrect {
+    animation: incorrect 0.75s ease-out;
+}
+
 #inputPopover grid button {
     min-width: 20px;
     min-height: 20px;
@@ -111,3 +119,13 @@
     padding-top: 15px;
 }
 
+
+@keyframes correct {
+    0%   {background-color: #6AE765;}
+    100% {background-color: transparent;}
+}
+
+@keyframes incorrect {
+    0%   {background-color: #E74C3C;}
+    100% {background-color: transparent;}
+}

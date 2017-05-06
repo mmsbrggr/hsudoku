@@ -18,6 +18,9 @@ module UserInterface (
     , windowAddCss
     , writeCell
     , writePopoverRelativeCell
+    , solveAll
+    , solvePopoverRelativeCell
+    , checkAll
     , cellsBindHandlers
     , numbersBindHandlers
     , writeSudoku
@@ -33,6 +36,9 @@ import           Data.Typeable
 import           GI.Gtk
 import           Sudoku.Type
 import           Sudoku.Loader
+import           Sudoku.Solver
+import           Control.Concurrent (forkIO, threadDelay)
+
 
 -- | Thrown when 'castB' fails get an object
 data BuilderCastException = UnknownIdException String deriving (Show, Typeable)
@@ -84,12 +90,8 @@ windowAddCss window path = liftIO $ do
     styleContextAddProviderForScreen screen cssProvider 1000
 
 -- | Writes a character into a sudoku cell
-writeCell :: (IsBin o) => o -> Char -> IO ()
-writeCell cell char = do
-    binCell <- toBin cell
-    labelO <- binGetChild binCell
-    label <- unsafeCastTo Label labelO
-    labelSetText label (T.singleton char)
+writeCell :: Button -> Char -> IO ()
+writeCell cell char = #setLabel cell (T.singleton char)
 
 -- | Writes a charachter into a cell which is associated to a given popover
 --   The popover gets closed afterwards.
@@ -100,12 +102,56 @@ writePopoverRelativeCell popover char = do
     writeCell cell char
     #hide popover
 
+-- | solves a given cell
+solveCell :: Button -> IO ()
+solveCell cell = do
+    char <- T.head <$> #getName cell
+    writeCell cell char
+
+-- | solves all given cells
+solveAll :: [Button] -> IO ()
+solveAll = mapM_ solveCell
+
+-- | Solves the cell currently relative to the popover
+solvePopoverRelativeCell :: Popover -> IO ()
+solvePopoverRelativeCell popover = do
+    cell <- #getRelativeTo popover >>= unsafeCastTo Button
+    solveCell cell
+    #hide popover
+
 -- | Binds the signal handlers to buttons
 cellsBindHandlers :: [Button] -> Popover -> IO ()
 cellsBindHandlers cells popover = mapM_ (\c -> do
             on c #focusInEvent  $ focusInHandler c
         ) cells
     where focusInHandler c _ = do cellShowPopover c popover; pure False
+
+-- | Checks and returns if a given cell contains the correct value
+--   If the value is not correct the cell gets visually marked
+checkCell :: Button -> IO Bool
+checkCell cell = do
+    solution <- T.head <$> (toWidget cell >>= #getName)
+    actual <- T.head <$> #getLabel cell 
+    let isCorrect = actual == solution
+    style <- #getStyleContext cell
+    if not isCorrect
+        then #addClass style "incorrect"
+        else pure ()
+    forkIO $ threadDelay 800000 >> #removeClass style "incorrect"
+    pure isCorrect
+
+-- | Checks if all given cells contain the correct value
+--   Visually marks the correct or incorrect cells.
+checkAll :: [Button] -> IO ()
+checkAll cells = do
+    allAreCorrect <- and <$> mapM checkCell cells
+    if allAreCorrect
+        then mapM_ (\cell -> do
+            style <- #getStyleContext cell
+            #addClass style "correct"
+            forkIO $ threadDelay 800000 >> #removeClass style "correct"
+        ) cells
+        else pure ()
 
 -- | Associates the popover to a given button and shows the popover
 cellShowPopover :: Button -> Popover -> IO ()
@@ -136,6 +182,14 @@ writeSudoku buttons sudoku = do
                 else b `set` [#sensitive := False]
         ) buttons sudokuChars
 
+-- | Stores a given solution in the names of the passed cells
+writeSolution :: [Button] -> Sudoku -> IO ()
+writeSolution buttons sudoku = do
+    let sudokuChars = toString sudoku
+    sequence_ $ zipWith (\b c -> do
+            #setName b (T.singleton c)
+        ) buttons sudokuChars
+
 -- | Binds the signal handlers to the game buttons in the menu
 gameButtonsBindHandlers :: [Button] -> [Button] -> Widget -> IO ()
 gameButtonsBindHandlers buttons cells menu = do
@@ -149,7 +203,9 @@ gameButtonsBindHandlers buttons cells menu = do
 newGame :: Difficulty -> [Button] -> Widget -> IO ()
 newGame d cells menu = do
     Just sudoku <- loadSudoku d
+    let Just solution = head <$> solveSudoku sudoku
     writeSudoku cells sudoku
+    writeSolution cells solution
     #hide menu
 
 showMenu :: Widget -> Popover -> IO ()

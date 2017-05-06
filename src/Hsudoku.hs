@@ -23,6 +23,14 @@ main = do
     Ui.numbersBindHandlers numberButtons inputPopover
     inputClear <- Ui.builderGetTyped builder "inputClear" Gtk.Button
     on inputClear #clicked $ Ui.writePopoverRelativeCell inputPopover $ blankval
+    inputSolve <- Ui.builderGetTyped builder "inputSolve" Gtk.Button
+    on inputSolve #clicked $ Ui.solvePopoverRelativeCell inputPopover
+
+    solveButton <- Ui.builderGetTyped builder "solveButton" Gtk.Button
+    on solveButton #clicked $ Ui.solveAll cells
+
+    checkButton <- Ui.builderGetTyped builder "checkButton" Gtk.Button
+    on checkButton #clicked $ Ui.checkAll cells
 
     menu <- Ui.builderGetTyped builder "menu" Gtk.Widget
     gameButtons <- Ui.builderGetsTyped builder Ui.gameButtonNames Gtk.Button
@@ -32,5 +40,4 @@ main = do
 
     #showAll window
     Gtk.main
-
 

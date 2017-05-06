@@ -32,6 +32,7 @@ cabal-version:       >=1.10
 
 
 executable hsudoku
+  ghc-options:         -threaded
   -- .hs or .lhs file containing the Main module.
   main-is:             Hsudoku.hs
   

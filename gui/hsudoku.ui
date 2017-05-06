@@ -173,8 +173,8 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
-            <property name="label" translatable="yes">Solve</property>
+          <object class="GtkButton" id="inputSolve">
+            <property name="label" translatable="yes">Cheat</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -2770,13 +2770,37 @@
                 <property name="column_homogeneous">True</property>
                 <child>
                   <object class="GtkButton" id="menuButton">
-                    <property name="label" translatable="yes">Menu</property>
+                    <property name="label" translatable="yes">Abort</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="solveButton">
+                    <property name="label" translatable="yes">Cheat</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="checkButton">
+                    <property name="label" translatable="yes">Check</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
                     <property name="top_attach">0</property>
                   </packing>
                 </child>
