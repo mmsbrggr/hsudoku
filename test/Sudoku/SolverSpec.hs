@@ -1,6 +1,11 @@
 module Sudoku.SolverSpec (main, spec) where
 
+import           Data.Maybe      (fromJust, isJust)
+import           Sudoku.Solver
+import           Sudoku.Type
 import           Test.Hspec
+import           Test.QuickCheck
+import           TestData
 import           Util
 
 -- `main` is here so that this module can be run from GHCi on its own.  It is
@@ -10,7 +15,12 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-    describe "Sample test" $ do
-        it "The logical laws should not be fucked up" $ do
-            True `shouldBe` True
+    describe "solveSudoku" $ do
+        it "should return something" $ property $
+            \s -> isJust $ solveSudoku s
+
+        it "should not contain blank values" $ property $
+            \s -> let solutionStrings = map toString (fromJust $ solveSudoku s)
+                  in and $ map (all (/= blankval)) solutionStrings
+
 

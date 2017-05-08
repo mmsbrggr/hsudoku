@@ -94,5 +94,6 @@ test-suite spec
                       , Sudoku.TypeSpec
                       , Sudoku.SolverSpec
                       , Sudoku.LoaderSpec
+                      , TestData
 
   default-language:    Haskell2010

@@ -1,5 +1,6 @@
 module UtilSpec (main, spec) where
 
+import           Data.List       (nub)
 import           Test.Hspec
 import           Test.QuickCheck
 import           Util
@@ -15,34 +16,41 @@ spec = do
         it "should return true for the empty list" $ do
             nodups ([] :: [Int]) `shouldBe` True
 
-        it "should return true for lists with no duplicates" $ do
-            nodups [1,2,3,4,5] `shouldBe` True
-
-        it "should return false for lists with duplicates" $ do
-            nodups [1,1,3,4,5] `shouldBe` False
+        it "should return true just for lists with no duplicates" $ property $
+            \xs -> nodups (xs :: [Int]) == (length xs == (length $ nub xs))
 
     describe "groupBy" $ do
         it "should return the empty list if given an empty list" $ property $
-            \n -> groupBy n ([] :: [Int]) == ([] :: [[Int]])
+            \n -> groupBy n ([] :: [Int]) `shouldBe` ([] :: [[Int]])
 
-        it "should create the right amount of groups" $ do
-            (length $ groupBy 2 [1,2,3,4,5]) `shouldBe` 3
+        it "should create the right amount of groups" $ property $
+            \xs -> and $ map (\n ->
+                                 let groups  = length $ groupBy n (xs :: [Int])
+                                     predicted = case xs of
+                                                      [] -> 0
+                                                      _  -> if length xs `mod` n == 0
+                                                              then length xs `div` n
+                                                              else 1 + length xs `div` n
+                                 in groups == predicted) [1..10]
 
-        it "should create the right group sizes" $ do
-          (and . init . map ((== 2) . length) $ groupBy 2 [1,2,3,4,5]) `shouldBe` True
+        it "should create the right group sizes" $ property $
+            \xs -> and $ map (\n ->
+                                let sizes = map length $ groupBy n (xs :: [Int])
+                                in all (<= n) sizes
+                             ) [1..10]
 
     describe "ungroup" $ do
         it "should return the empty list if given an empty list" $ property $
-            ungroup ([] :: [[Int]]) == ([] :: [Int])
+            ungroup ([] :: [[Int]]) `shouldBe` ([] :: [Int])
 
-        it "should contain the same elements" $ do
-            ungroup [[1,2], [3,4], [5]] `shouldBe` [1,2,3,4,5]
+        it "should contain the same elements" $ property $
+            \xxs -> ungroup (xxs :: [[Int]]) == concat xxs
 
     describe "single" $ do
         it "should be true if and only the list contains one element" $ property $
-            \xs -> single (xs :: [Int]) == (length xs == 1)
+            \xs -> single (xs :: [Int]) `shouldBe` (length xs == 1)
 
     describe "delete" $ do
-        it "should not contain the deleted elements" $ do
-            delete [3,4] [1,2,3,4,5] `shouldBe` [1,2,5]
+        it "should not contain the deleted elements" $ property $
+           \xs ys -> delete xs (xs ++ ys) == (ys :: [Int])
 
