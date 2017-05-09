@@ -41,7 +41,7 @@ cabal test
 ```
 
 ## Documentation
-Documentation of the code and the hackage package can be found on [hackage/sudoku](https://hackage.haskell.org/package/hsudoku)
+Documentation of the code and the hackage package can be found on [hackage/hsudoku](https://hackage.haskell.org/package/hsudoku)
 
 ## Licence
 This project is licensed under the terms of the MIT license. See the LICENSE file.
