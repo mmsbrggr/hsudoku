@@ -12,6 +12,8 @@
     <a href="#motivation">Motivation</a> &bull;
     <a href="#installation">Installation</a> &bull;
     <a href="#installation">Usage</a>
+    <a href="#tests and coverage">Tests</a>
+    <a href="#documentation">Documentation</a>
 </p>
 -------
 
@@ -37,6 +39,9 @@ Tests can easily be run with:
 ```
 cabal test
 ```
+
+## Documentation
+Documentation of the code and the hackage package can be found on hackage.haskell.org/package/hsudoku
 
 ## Licence
 This project is licensed under the terms of the MIT license. See the LICENSE file.
