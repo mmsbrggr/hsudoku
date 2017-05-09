@@ -18,6 +18,25 @@
 ## Appearance
 
 <h3 align="center">
-  <img src="gui/menu.png" alt="Menu" />
-  <img src="gui/play.gif" alt="Gameplay" />
+  <img width="400px" src="gui/menu.png" alt="Menu" />
+  <img width="400px" src="gui/play.gif" alt="Gameplay" />
 </h3>
+
+## Motivation
+
+## Installation
+
+## Usage
+If everything is installed the game can be run from the installation folder:
+```
+dist/build/hsudoku/hsudoku
+```
+
+## Tests and Coverage
+Tests can easily be run with:
+```
+cabal test
+```
+
+## Licence
+This project is licensed under the terms of the MIT license. See the LICENSE file.
