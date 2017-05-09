@@ -11,8 +11,8 @@
     <a href="#appearance">Appearance</a> &bull;
     <a href="#motivation">Motivation</a> &bull;
     <a href="#installation">Installation</a> &bull;
-    <a href="#installation">Usage</a>
-    <a href="#tests and coverage">Tests</a>
+    <a href="#installation">Usage</a> &bull;
+    <a href="#tests-and-coverage">Tests</a> &bull;
     <a href="#documentation">Documentation</a>
 </p>
 -------
