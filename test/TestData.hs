@@ -4,8 +4,13 @@ import           Data.Maybe      (fromJust)
 import           Sudoku.Type
 import           Test.QuickCheck
 
-instance Arbitrary Sudoku where
-    arbitrary = elements sudokus
+newtype TestSudoku = TS Sudoku
+
+instance Arbitrary TestSudoku where
+    arbitrary = elements $ map TS sudokus
+
+instance Show TestSudoku where
+    show (TS s) = show s
 
 sudokus :: [Sudoku]
 sudokus = easySudokus ++ mediumSudokus ++ hardSudokus ++ evilSudokus
