@@ -2,6 +2,9 @@
 
 ### Haskell ###
 dist
+build
+doc
+setup-config
 dist-*
 cabal-dev
 *.o

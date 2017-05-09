@@ -1,36 +1,22 @@
--- The name of the package.
-name:                hsudoku
-
--- The package version.  See the Haskell package versioning policy (PVP) 
--- for standards guiding when and how versions should be incremented.
--- https://wiki.haskell.org/Package_versioning_policy
--- PVP summary:      +-+------- breaking API changes
---                   | | +----- non-breaking API additions
---                   | | | +--- code changes with no API change
-version:             0.1.0.0
-
--- A short (one-line) description of the package.
+name:               hsudoku
+version:            0.1.0.0
 synopsis:           Sudoku game with a GTK3 interface
-description:        This package realizes a graphical sudoku game. Moreover it
-                    provides packages for loading and solving sudoku grids.
+description:        This package realizes a graphical GTK3 sudoku game. Moreover it
+                    provides modules for loading and solving sudoku grids.
 
--- The license under which the package is released.
-license:             MIT
-license-file:        LICENSE
+license:            MIT
+license-file:       LICENSE
+author:             Marcel Moosbrugger
+maintainer:         marcelmoosbrugger@gmail.com
+category:           Game
+homepage:           https://github.com/marcelmoosbrugger/hsudoku
+bug-reports:        https://github.com/marcelmoosbrugger/hsudoku/issues
+build-type:         Simple
+cabal-version:      >=1.10
 
--- The package author(s).
-author:              Marcel Moosbrugger
-
--- An email address to which users can send suggestions, bug reports, and 
--- patches.
-maintainer:          marcelmoosbrugger@gmail.com
-
-category:            Game
-
-build-type:          Simple
-
--- Constraint on the version of Cabal needed to build this package.
-cabal-version:       >=1.10
+source-repository head
+    type:           git
+    location:       git@github.com:marcelmoosbrugger/hsudoku.git   
 
 library
   hs-source-dirs:      src
@@ -57,13 +43,7 @@ library
 
 executable hsudoku
   ghc-options:         -threaded
-  -- .hs or .lhs file containing the Main module.
   main-is:             Hsudoku.hs
-  
-  -- LANGUAGE extensions used by modules in this package.
-  -- other-extensions:    
-  
-  -- Other library packages from which modules are imported.
   build-depends:       base >=4.9 && <4.10
                      , text >=1.2 && <1.3
                      , bytestring>=0.10 && <0.11
@@ -75,10 +55,7 @@ executable hsudoku
                      , gi-gtk>=3.0 && <3.1
                      , hsudoku
 
-  -- Directories containing source files.
   hs-source-dirs:      src
-  
-  -- Base language which the package is written in.
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, OverloadedLabels
 
@@ -87,7 +64,6 @@ test-suite spec
    ghc-options:         -Wall
    main-is:             Spec.hs
    hs-source-dirs:      test
-   
    build-depends:       base >=4.9 && <4.10
                       , text >=1.2 && <1.3
                       , bytestring>=0.10 && <0.11
