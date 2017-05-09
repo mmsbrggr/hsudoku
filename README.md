@@ -28,7 +28,7 @@
 ## Motivation
 
 ## Installation
-λsudoku has a fow prerequesites. If they are already installed on your system, you can skip the following steps.
+λsudoku has a few prerequesites. If they are already installed on your system, you can skip the following steps.
 - At least GHC 8.0.2 and cabal 1.24
 ```
 sudo add-apt-repository -y ppa:hvr/ghc
@@ -36,7 +36,7 @@ sudo apt-get update
 sudo apt-get install cabal-install-1.24 ghc-8.0.2
 export PATH=/opt/ghc/8.0.2/bin:/opt/cabal/1.24/bin:$PATH
 ```
-- The GT3 and the gobject-introspection packages
+- The GTK3 and the gobject-introspection packages
 ```
 sudo apt-get install build-essential libgtk-3-dev
 sudo apt-get install libgirepository1.0-dev
