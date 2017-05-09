@@ -10,7 +10,7 @@
 <p align="center">
     <a href="#appearance">Appearance</a> &bull;
     <a href="#motivation">Motivation</a> &bull;
-    <a href="#installation">Installation</a>
+    <a href="#installation">Installation</a> &bull;
     <a href="#installation">Usage</a>
 </p>
 -------
