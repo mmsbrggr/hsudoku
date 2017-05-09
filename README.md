@@ -26,6 +26,8 @@
 </h3>
 
 ## Motivation
+λsudoku was born in a haskell universty course at the technical university in Vienna.
+The goal was to create a neat looking and user-friendly haskell game using modern technologies and libraries, namely GTK3 and [haskell-gi](https://github.com/haskell-gi/haskell-gi).
 
 ## Installation
 λsudoku has a few prerequesites. If they are already installed on your system, you can skip the following steps.
