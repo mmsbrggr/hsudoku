@@ -14,3 +14,10 @@
     <a href="#installation">Usage</a>
 </p>
 -------
+
+## Appearance
+
+<h3 align="center">
+  <img src="gui/menu.png" alt="Menu" />
+  <img src="gui/play.gif" alt="Gameplay" />
+</h3>
