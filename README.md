@@ -15,6 +15,7 @@
     <a href="#tests-and-coverage">Tests</a> &bull;
     <a href="#documentation">Documentation</a>
 </p>
+
 -------
 
 ## Appearance
@@ -27,6 +28,32 @@
 ## Motivation
 
 ## Installation
+λsudoku has a fow prerequesites. If they are already installed on your system, you can skip the following steps.
+- At least GHC 8.0.2 and cabal 1.24
+```
+sudo add-apt-repository -y ppa:hvr/ghc
+sudo apt-get update
+sudo apt-get install cabal-install-1.24 ghc-8.0.2
+export PATH=/opt/ghc/8.0.2/bin:/opt/cabal/1.24/bin:$PATH
+```
+- The GT3 and the gobject-introspection packages
+```
+sudo apt-get install build-essential libgtk-3-dev
+sudo apt-get install libgirepository1.0-dev
+```
+- The *happy* haskell package
+```
+cabal update
+cabal install happy
+```
+
+With all dependencies in place, the hsudoku game can be installed:
+```
+git clone git@github.com:marcelmoosbrugger/hsudoku.git
+cd hsudoku
+cabal install --only-dependencies
+cabal build
+```
 
 ## Usage
 If everything is installed the game can be run from the installation folder:
