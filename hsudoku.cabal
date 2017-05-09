@@ -10,7 +10,9 @@ name:                hsudoku
 version:             0.1.0.0
 
 -- A short (one-line) description of the package.
-synopsis:           Sudoku game written in haskell 
+synopsis:           Sudoku game with a GTK3 interface
+description:        This package realizes a graphical sudoku game. Moreover it
+                    provides packages for loading and solving sudoku grids.
 
 -- The license under which the package is released.
 license:             MIT

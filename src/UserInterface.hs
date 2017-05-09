@@ -1,11 +1,11 @@
 {-|
 Module: UserInterface
-Description: Provides various functions for building the user interface
+Description: Provides various functions for building the user interface.
 Copyright: (c) Marcel Moosbrugger, 2017
 License     : MIT
 
 Provides various functions for building the user interface of the
-sudoku application
+sudoku application.
 -}
 module UserInterface (
       BuilderCastException(..)
@@ -44,7 +44,7 @@ import           Sudoku.Solver
 import           Control.Concurrent (forkIO, threadDelay)
 
 
--- | Thrown when 'castB' fails get an object
+-- | Thrown when 'castB' fails get an object.
 data BuilderCastException = UnknownIdException String deriving (Show, Typeable)
 
 instance Exception BuilderCastException
@@ -89,11 +89,11 @@ buildSudokuUI guiFilePath = do
                     numberButtons inputClear inputSolve solveButton
                     checkButton menuButton
 
--- | The ids of the sudoku cells in the ui file
+-- | The ids of the sudoku cells in the ui file.
 cellNames :: [T.Text]
 cellNames = map (T.pack . (++) "cell") $ map show [1..81]
 
--- | The ids of the inputs for the numbers in the ui file
+-- | The ids of the inputs for the numbers in the ui file.
 numberNames :: [T.Text]
 numberNames = map (T.pack . (++) "input") $ map show [1..9]
 
@@ -102,7 +102,7 @@ gameButtonNames :: [T.Text]
 gameButtonNames = map (T.pack . (++) "game" . show) [Easy ..] 
 
 -- | Takes a builder and returns the object with a given name
---   typed as a given gtype
+--   typed as a given gtype.
 builderGetTyped :: (IsBuilder a, GObject o, MonadIO m) => a -> T.Text -> (ManagedPtr o -> o) -> m o
 builderGetTyped builder ident gtype =
     liftIO $ do
@@ -111,12 +111,12 @@ builderGetTyped builder ident gtype =
             Just a  -> unsafeCastTo gtype a
             Nothing -> throw $ UnknownIdException $ T.unpack ident
 
--- | Same as builderGetTyped for a list of names
+-- | Same as builderGetTyped for a list of names.
 builderGetsTyped :: (GObject a, IsBuilder b, MonadIO m) => b -> [T.Text] -> (ManagedPtr a -> a) -> m [a]
 builderGetsTyped b is t = sequence $ map (\i -> builderGetTyped b i t) is
 
 -- | Builds the main application window from a xml definition file for which the
---   path is given
+--   path is given.
 buildMainWindow :: MonadIO m => T.Text -> T.Text -> m (Window, Builder)
 buildMainWindow name path = liftIO $ do
     builder <- builderNewFromFile path
@@ -125,7 +125,7 @@ buildMainWindow name path = liftIO $ do
     windowAddCss window "gui/theme.css"
     pure (window, builder)
 
--- | Adds to a given window a css file for which the path is given
+-- | Adds to a given window a css file for which the path is given.
 windowAddCss :: (MonadIO m, IsWindow a) => a -> T.Text -> m ()
 windowAddCss window path = liftIO $ do
     screen <- windowGetScreen window
@@ -133,7 +133,7 @@ windowAddCss window path = liftIO $ do
     cssProviderLoadFromPath cssProvider path
     styleContextAddProviderForScreen screen cssProvider 1000
 
--- | Writes a character into a sudoku cell
+-- | Writes a character into a sudoku cell.
 writeCell :: Cell -> Char -> IO ()
 writeCell cell char = #setLabel cell (T.singleton char)
 
@@ -146,32 +146,32 @@ writePopoverRelativeCell popover char = do
     writeCell cell char
     #hide popover
 
--- | solves a given cell
+-- | Solves a given cell.
 solveCell :: Cell -> IO ()
 solveCell cell = do
     char <- T.head <$> #getName cell
     writeCell cell char
 
--- | solves all given cells
+-- | Solves all given cells.
 solveAll :: Cells -> IO ()
 solveAll = mapM_ solveCell
 
--- | Solves the cell currently relative to the popover
+-- | Solves the cell currently relative to the popover.
 solvePopoverRelativeCell :: Popover -> IO ()
 solvePopoverRelativeCell popover = do
     cell <- #getRelativeTo popover >>= unsafeCastTo Button
     solveCell cell
     #hide popover
 
--- | Binds the signal handlers to buttons
+-- | Binds the signal handlers to buttons.
 cellsBindHandlers :: Cells -> Popover -> IO ()
 cellsBindHandlers cells popover = mapM_ (\c -> do
             on c #focusInEvent  $ focusInHandler c
         ) cells
     where focusInHandler c _ = do cellShowPopover c popover; pure False
 
--- | Checks and returns if a given cell contains the correct value
---   If the value is not correct the cell gets visually marked
+-- | Checks and returns if a given cell contains the correct value.
+--   If the value is not correct the cell gets visually marked.
 checkCell :: Cell -> IO Bool
 checkCell cell = do
     solution <- T.head <$> (toWidget cell >>= #getName)
@@ -184,7 +184,7 @@ checkCell cell = do
     forkIO $ threadDelay 800000 >> #removeClass style "incorrect"
     pure isCorrect
 
--- | Checks if all given cells contain the correct value
+-- | Checks if all given cells contain the correct value.
 --   Visually marks the correct or incorrect cells.
 checkAll :: Cells -> IO ()
 checkAll cells = do
@@ -197,25 +197,25 @@ checkAll cells = do
         ) cells
         else pure ()
 
--- | Associates the popover to a given button and shows the popover
+-- | Associates the popover to a given button and shows the popover.
 cellShowPopover :: Cell -> Popover -> IO ()
 cellShowPopover cell popover = do
     popover `set` [#relativeTo := cell]
     #show popover
 
--- | Binds the signal handlers to a list of number buttons
+-- | Binds the signal handlers to a list of number buttons.
 numbersBindHandlers :: [Button] -> Popover -> IO ()
 numbersBindHandlers buttons popover = mapM_ (\b -> do
             on b #clicked $ numberButtonInsert b popover
         ) buttons
 
--- | Inserts the content of a number button to a cell associated to the popover
+-- | Inserts the content of a number button to a cell associated to the popover.
 numberButtonInsert :: Button -> Popover -> IO ()
 numberButtonInsert button popover = do
     label <- #getLabel button
     writePopoverRelativeCell popover $ T.head label
 
--- | Writes a sudoku into a list of buttons
+-- | Writes a sudoku into a list of buttons.
 writeSudoku :: Cells -> Sudoku -> IO ()
 writeSudoku cells sudoku = do
     let sudokuChars = toString sudoku
@@ -226,7 +226,7 @@ writeSudoku cells sudoku = do
                 else c `set` [#sensitive := False]
         ) cells sudokuChars
 
--- | Stores a given solution in the names of the passed cells
+-- | Stores a given solution in the names of the passed cells.
 writeSolution :: Cells -> Sudoku -> IO ()
 writeSolution cells sudoku = do
     let sudokuChars = toString sudoku
@@ -234,7 +234,7 @@ writeSolution cells sudoku = do
             #setName c (T.singleton sc)
         ) cells sudokuChars
 
--- | Binds the signal handlers to the game buttons in the menu
+-- | Binds the signal handlers to the game buttons in the menu.
 gameButtonsBindHandlers :: [Button] -> Cells -> Widget -> IO ()
 gameButtonsBindHandlers buttons cells menu = do
     mapM_ (\button -> do
@@ -243,7 +243,7 @@ gameButtonsBindHandlers buttons cells menu = do
             on button #clicked $ newGame d cells menu
         ) buttons
 
--- | Prepares a new game in the UI
+-- | Prepares a new game in the UI.
 newGame :: Difficulty -> Cells -> GameMenu -> IO ()
 newGame d cells menu = do
     Just sudoku <- loadSudoku d
@@ -252,7 +252,7 @@ newGame d cells menu = do
     writeSolution cells solution
     #hide menu
 
--- | Shows the menu and ensures that the popover is hidden
+-- | Shows the menu and ensures that the popover is hidden.
 showMenu :: GameMenu -> Popover -> IO ()
 showMenu menu popover = do
     #hide popover

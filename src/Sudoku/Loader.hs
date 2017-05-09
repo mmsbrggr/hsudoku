@@ -1,10 +1,10 @@
 {-|
 Module: Sudoku.Loader
-Description : provides functions to load a sudoku from the network
+Description : Provides functions to load a sudoku from the internet.
 Copyright: (c) Marcel Moosbrugger, 2017
 License     : MIT
 
-This module contains functions to load sudokus from the network
+This module contains functions to load sudokus from the internet.
 -}
 module Sudoku.Loader(loadSudoku) where
 
@@ -19,7 +19,7 @@ import           Text.Printf                (printf)
 import           Text.XML.HXT.Core
 import           Util
 
--- | Converts a difficulty to number which can be plugged into the url
+-- | Converts a difficulty to number which can be plugged into the url.
 toNumber :: Difficulty -> Int
 toNumber Easy   = 40
 toNumber Medium = 33
@@ -27,11 +27,11 @@ toNumber Hard   = 26
 toNumber Evil   = 17
 
 -- | Creates the url for a given difficullty level from which the sudokus get
--- loaded
+--   loaded.
 url :: Difficulty -> String
 url d = "https://kjell.haxx.se/sudoku/?visade=" ++ (show $ toNumber d) ++ "&seed=%28random+seed%29&action=Create+a+field&hardchange=0"
 
--- |Loads a sudoku from the network with a given difficulty level
+-- | Loads a sudoku with a given difficulty level from the internet.
 loadSudoku :: Difficulty -> IO (Maybe Sudoku)
 loadSudoku d = do
     manager <- newManager tlsManagerSettings

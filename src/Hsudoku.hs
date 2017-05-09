@@ -1,3 +1,12 @@
+{-|
+Module: Main
+Description: The main module of the sudoku executable
+Copyright: (c) Marcel Moosbrugger, 2017
+License     : MIT
+
+Contains the main function which sets up the UI of the
+sudoku executable.
+-}
 module Main where
 
 import           Data.GI.Base
@@ -5,6 +14,8 @@ import qualified GI.Gtk        as Gtk
 import           Sudoku.Type
 import           UserInterface
 
+-- | The main function which opens a new GTK window in which sudoku games can be
+-- played.
 main :: IO ()
 main = do
     Gtk.init Nothing
