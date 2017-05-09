@@ -1,7 +1,5 @@
 # WIP hsudoku
 TODO:
-- Write tests
-- Cleanup documentation
 - Github work
   - CI
   - Make documentation available
