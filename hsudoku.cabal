@@ -13,6 +13,7 @@ homepage:           https://github.com/marcelmoosbrugger/hsudoku
 bug-reports:        https://github.com/marcelmoosbrugger/hsudoku/issues
 build-type:         Simple
 cabal-version:      >=1.10
+Tested-with:        GHC == 8.0.2
 
 source-repository head
     type:           git
