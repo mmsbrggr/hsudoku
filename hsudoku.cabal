@@ -87,3 +87,33 @@ test-suite spec
 
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, OverloadedLabels
+
+-- Travis does not support ubuntu 16.04 yet and therefore
+-- GTK+ 3.20 cannot be installed. As the user interface
+-- uses new features from GTK+ 3.20, these cannot be tested on travis
+test-suite travis
+   type:                exitcode-stdio-1.0
+   ghc-options:         -Wall
+   main-is:             Travis.hs
+   hs-source-dirs:      test
+   build-depends:       base >=4.9 && <4.10
+                      , text >=1.2 && <1.3
+                      , bytestring>=0.10 && <0.11
+                      , http-client>=0.5 && <0.6
+                      , http-client-tls>= 0.3 && <0.4
+                      , HandsomeSoup>=0.4 && <0.5
+                      , hxt>=9.3 && <9.4
+                      , haskell-gi-base>=0.20 && <0.21
+                      , gi-gtk>=3.0 && <3.1
+                      , hspec>=2.4 && <2.5
+                      , QuickCheck>=2.9 && <2.10
+                      , hsudoku
+
+  other-modules:        UtilSpec
+                      , Sudoku.TypeSpec
+                      , Sudoku.SolverSpec
+                      , Sudoku.LoaderSpec
+                      , TestData
+
+  default-language:    Haskell2010
+  default-extensions:  OverloadedStrings, OverloadedLabels
