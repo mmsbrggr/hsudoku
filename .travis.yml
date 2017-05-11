@@ -1,12 +1,10 @@
 # This file has been generated -- see https://github.com/hvr/multi-ghc-travis
+
 language: c
 sudo: required
 dist: trusty
 
-cache:
-  directories:
-    - $HOME/.cabsnap
-    - $HOME/.cabal/packages
+cache: false
 
 before_cache:
   - rm -fv $HOME/.cabal/packages/hackage.haskell.org/build-reports.log
