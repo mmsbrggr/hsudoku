@@ -74,7 +74,7 @@ test-suite spec
                       , hxt>=9.3 && <9.4
                       , haskell-gi-base>=0.20 && <0.21
                       , gi-gtk>=3.0 && <3.1
-                      , hspec>=2.4 && <2.5
+                      , hspec>=2.2 && <2.5
                       , QuickCheck>=2.9 && <2.10
                       , hsudoku
 
@@ -105,7 +105,7 @@ test-suite travis
                       , hxt>=9.3 && <9.4
                       , haskell-gi-base>=0.20 && <0.21
                       , gi-gtk>=3.0 && <3.1
-                      , hspec>=2.4 && <2.5
+                      , hspec>=2.2 && <2.5
                       , QuickCheck>=2.9 && <2.10
                       , hsudoku
 
