@@ -15,6 +15,10 @@ build-type:         Simple
 cabal-version:      >=1.10
 Tested-with:        GHC == 8.0.2
 
+extra-source-files: gui/hsudoku.ui
+                    gui/icon.png,
+                    gui/theme.css
+
 source-repository head
     type:           git
     location:       git@github.com:marcelmoosbrugger/hsudoku.git   
@@ -74,7 +78,7 @@ test-suite spec
                       , hxt>=9.3 && <9.4
                       , haskell-gi-base>=0.20 && <0.21
                       , gi-gtk>=3.0 && <3.1
-                      , hspec>=2.4 && <2.5
+                      , hspec>=2.2 && <2.5
                       , QuickCheck>=2.9 && <2.10
                       , hsudoku
 
@@ -105,7 +109,7 @@ test-suite travis
                       , hxt>=9.3 && <9.4
                       , haskell-gi-base>=0.20 && <0.21
                       , gi-gtk>=3.0 && <3.1
-                      , hspec>=2.4 && <2.5
+                      , hspec>=2.2 && <2.5
                       , QuickCheck>=2.9 && <2.10
                       , hsudoku
 
