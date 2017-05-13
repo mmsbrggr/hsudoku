@@ -1,5 +1,5 @@
 name:               hsudoku
-version:            0.1.0.0
+version:            0.1.0.1
 synopsis:           Sudoku game with a GTK3 interface
 description:        This package realizes a graphical GTK3 sudoku game. Moreover it
                     provides modules for loading and solving sudoku grids.
