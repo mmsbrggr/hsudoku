@@ -20,7 +20,7 @@ main :: IO ()
 main = do
     Gtk.init Nothing
 
-    ui <- buildSudokuUI "gui/hsudoku.ui"
+    ui <- buildSudokuUI
     cellsBindHandlers (cells ui) (popover ui)
     numbersBindHandlers (numberButtons ui) (popover ui)
     on (inputClear ui) #clicked $ writePopoverRelativeCell (popover ui) $ blankval

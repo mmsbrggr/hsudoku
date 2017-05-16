@@ -32,17 +32,17 @@ module UserInterface (
     , showMenu
     ) where
 
+import           Control.Concurrent     (forkIO, threadDelay)
 import           Control.Exception
 import           Control.Monad.IO.Class
 import           Data.GI.Base
 import qualified Data.Text              as T
 import           Data.Typeable
 import           GI.Gtk
-import           Sudoku.Type
+import           Paths_hsudoku
 import           Sudoku.Loader
 import           Sudoku.Solver
-import           Control.Concurrent (forkIO, threadDelay)
-
+import           Sudoku.Type
 
 -- | Thrown when 'castB' fails get an object.
 data BuilderCastException = UnknownIdException String deriving (Show, Typeable)
@@ -57,7 +57,7 @@ type Cells = [Cell]
 type GameMenu = Widget
 
 -- | A type containing all handles of widgets necessary for the user interface.
-data SudokuUI = SudokuUI { window        :: Window 
+data SudokuUI = SudokuUI { window        :: Window
                          , menu          :: GameMenu
                          , gameButtons   :: [Button]
                          , cells         :: Cells
@@ -72,9 +72,10 @@ data SudokuUI = SudokuUI { window        :: Window
 
 
 -- | Builds the sudoku-ui from a gui-file for which the path is given.
-buildSudokuUI :: T.Text -> IO SudokuUI
-buildSudokuUI guiFilePath = do
-    (window, builder) <- buildMainWindow "mainWindow" guiFilePath
+buildSudokuUI :: IO SudokuUI
+buildSudokuUI = do
+    uiFile            <- T.pack <$> getDataFileName "gui/hsudoku.ui"
+    (window, builder) <- buildMainWindow "mainWindow" uiFile
     menu              <- builderGetTyped builder "menu" Widget
     gameButtons       <- builderGetsTyped builder gameButtonNames Button
     cells             <- builderGetsTyped builder cellNames Button
@@ -85,7 +86,7 @@ buildSudokuUI guiFilePath = do
     solveButton       <- builderGetTyped builder "solveButton" Button
     checkButton       <- builderGetTyped builder "checkButton" Button
     menuButton        <- builderGetTyped builder "menuButton" Button
-    pure $ SudokuUI window menu gameButtons cells popover 
+    pure $ SudokuUI window menu gameButtons cells popover
                     numberButtons inputClear inputSolve solveButton
                     checkButton menuButton
 
@@ -99,7 +100,7 @@ numberNames = map (T.pack . (++) "input") $ map show [1..9]
 
 -- | The ids of the buttons which start a new game
 gameButtonNames :: [T.Text]
-gameButtonNames = map (T.pack . (++) "game" . show) [Easy ..] 
+gameButtonNames = map (T.pack . (++) "game" . show) [Easy ..]
 
 -- | Takes a builder and returns the object with a given name
 --   typed as a given gtype.
@@ -122,7 +123,8 @@ buildMainWindow name path = liftIO $ do
     builder <- builderNewFromFile path
     window  <- builderGetTyped builder name Window
     on window #destroy mainQuit
-    windowAddCss window "gui/theme.css"
+    cssFile <- T.pack <$> getDataFileName "gui/theme.css"
+    windowAddCss window cssFile
     pure (window, builder)
 
 -- | Adds to a given window a css file for which the path is given.
@@ -175,7 +177,7 @@ cellsBindHandlers cells popover = mapM_ (\c -> do
 checkCell :: Cell -> IO Bool
 checkCell cell = do
     solution <- T.head <$> (toWidget cell >>= #getName)
-    actual <- T.head <$> #getLabel cell 
+    actual <- T.head <$> #getLabel cell
     let isCorrect = actual == solution
     style <- #getStyleContext cell
     if not isCorrect
@@ -258,4 +260,4 @@ showMenu menu popover = do
     #hide popover
     popover `set` [#relativeTo := menu]
     #show menu
-    
+
