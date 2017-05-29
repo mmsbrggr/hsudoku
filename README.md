@@ -1,10 +1,10 @@
 # λsudoku
 
-[![Travis](https://img.shields.io/travis/marcelmoosbrugger/hsudoku.svg)](https://travis-ci.org/marcelmoosbrugger/hsudoku)
-[![GitHub issues](https://img.shields.io/github/issues/marcelmoosbrugger/hsudoku.svg)](https://github.com/marcelmoosbrugger/hsudoku/issues)
-[![GitHub stars](https://img.shields.io/github/stars/marcelmoosbrugger/hsudoku.svg)](https://github.com/marcelmoosbrugger/hsudoku/stargazers)
+[![Travis](https://img.shields.io/travis/mmsbrggr/hsudoku.svg)](https://travis-ci.org/mmsbrggr/hsudoku)
+[![GitHub issues](https://img.shields.io/github/issues/mmsbrggr/hsudoku.svg)](https://github.com/mmsbrggr/hsudoku/issues)
+[![GitHub stars](https://img.shields.io/github/stars/mmsbrggr/hsudoku.svg)](https://github.com/mmsbrggr/hsudoku/stargazers)
 ![GTK version](https://img.shields.io/badge/GTK-3.20-blue.svg)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/marcelmoosbrugger/hsudoku/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/mmsbrggr/hsudoku/master/LICENSE)
 
 -------
 <p align="center">
